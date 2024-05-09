@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="Fier.jpg" alt="" style="width: 100px; position: absolute; top: 100px; left: 200px" id="v">
+<button onclick="lenTren()">lenTren</button>
+<button onclick="sangPhai()">sangPhai</button>
+<button onclick="sangTrai()">sangTrai</button>
+<button onclick="xuongDuoi()">xuongDuoi</button>
+
+<script>
+    function sangPhai() {
+        let son = document.getElementById('v')
+        son.style.left = parseInt(son.style.left) + 20 + 'px'
+    }
+    function sangTrai() {
+        let son = document.getElementById('v')
+        son.style.left = parseInt(son.style.left) - 20 + 'px'
+    }
+    function lenTren() {
+        let son = document.getElementById('v')
+        son.style.top = parseInt(son.style.top) - 20 + 'px'
+    }
+    function xuongDuoi() {
+        let son = document.getElementById('v')
+        son.style.top = parseInt(son.style.top) + 20 + 'px'
+    }
+    window.addEventListener('keydown', (e) => {
+        console.log(e.key)
+        switch(e.key) {
+            case 'a':
+                sangTrai();
+                break;
+            case 'd':
+                sangPhai();
+                break;
+            case 'w':
+                lenTren();
+                break;
+            case 's':
+                xuongDuoi();
+                break;
+        }
+        // a -> sang trai
+        // d -> sang phai
+        // w -> len tren
+        // s -> xuong duoi
+    })
+</script>
+</body>
+</html>
