@@ -6,33 +6,42 @@
 </head>
 <body>
 <a href="traiquaphai.html">Link di chuyển từ trai qua phải</a>
-<img src="Fier.jpg" style="width: 150px; height: 200px; position: absolute; left: 0px; top:0px" id="pi"/></body>
+<br>
+<a href="quaylai.html">Link di chuyển qua lại</a>
+<img src="Fier.jpg" style="width: 100px; height: 100px; position: absolute; left: 0px; top:0px" id="v"/>
+</body>
 <script>
-    let s = 3;
-    let move = 'right'; // hướng đi lúc đầu
-    setInterval (() => {
-        let Fier = document.getElementById('pi');
-        if (move === 'right'  && parseInt(Fier.style.left) < window.innerWidth - Fier.width) {
-            Fier.style.left = parseInt(Fier.style.left) + s + 'px';
-        } else if (move === 'right') {
-            move = 'down';
+    let vW = 20;
+    let vH = 20;
+    function sangPhai() {
+        let son = document.getElementById('v');
+        son.style.left = parseInt(son.style.left) + vW + 'px';
+        let viTri = parseInt(son.style.left);
+        let viTriTop = parseInt(son.style.top);
+        if(viTri > window.innerWidth - son.width && viTriTop >= 0) { //goc top.right
+            vW = 0;
+            vH = 20;
+            son.style.top = viTriTop + vH + 'px';
         }
-        if (move === 'down'  && parseInt(Fier.style.top) < window.innerHeight - Fier.height) {
-            Fier.style.top = parseInt(Fier.style.top) + s + 'px';
-        } else if (move === 'down') {
-            move = 'left';
-        }
-        if (move === 'left'  && parseInt(Fier.style.left) > 0) {
-            Fier.style.left = parseInt(Fier.style.left) - s + 'px';
-        } else if (move === 'left') {
-            move = 'up';
+        if(parseInt(son.style.top) > window.innerHeight - son.height) { //goc bot right
+            vH = 0;
+            vW = -20;
         }
 
-        if (move === 'up'  && parseInt(Fier.style.top) > 0) {
-            Fier.style.top = parseInt(Fier.style.top) - s + 'px';
-        } else if (move === 'up') {
-            move = 'right';
+        if(parseInt(son.style.left) <= 0 && parseInt(son.style.top) >= 0) { //goc bot left
+            vW = 0;
+            vH = -20;
+            son.style.top = viTriTop + vH + 'px';
         }
-    },1)
+
+        if(parseInt(son.style.left) <= 0 && parseInt(son.style.top) <= 0) { // goc top left
+            vW = 20;
+            vH = 0;
+        }
+    }
+
+    setInterval(function () {
+        sangPhai();
+    }, 10)
 </script>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<img src="Fier.jpg" style="width: 100px; height: 100px; position: absolute; left: 0px; top:0px" id="Fier"/>
+<body>
+<script>
+let w =3
+let h = 3
+let Fier = document.getElementById('Fier')
+setInterval(()=>{
+Fier.style.left = parseInt(Fier.style.left) + w +"px"
+Fier.style.top = parseInt(Fier.style.top) + h + 'px'
+if (parseInt(Fier.style.left) >= window.innerWidth - Fier.width || parseInt(Fier.style.left) <= 0){
+w = -w
+}
+if (parseInt(Fier.style.top) >= window.innerHeight - Fier.height || parseInt(Fier.style.top) <= 0){
+h = -h
+}
+},10)
+</script>
+</body>
+</html>
